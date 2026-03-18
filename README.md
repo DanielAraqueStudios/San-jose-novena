@@ -27,19 +27,27 @@ Since this is a static website:
 2. **Open `index.html`** directly in any web browser to view the site, or use a tool like VS Code Live Server for local development.
 3. No build tools (like Webpack or Vite) are required. The site is vanilla HTML/CSS/JS and is ready to be hosted as-is on platforms like GitHub Pages, Vercel, Netlify, or any traditional web host.
 
-## Refactoring Decisions
-- **Purged TemplateMo Branding:** All textual, visual, code-level, and metadata references to "Maison Dorée" and "TemplateMo 611" were completely removed.
-- **Renamed Core Assets:** 
-  - `templatemo-maison-style.css` -> `style.css`
-  - `templatemo-maison-doree.js` -> `main.js`
-  - `maison-templatemo.html` -> Deleted (redundant template file)
-- **Content Overhaul:** Replaced jewelry-focused sections (Collections, Craftsmanship) with Novena-specific content (Days 1-9, Prayers, Intentions).
-- **Exact Devocionario Integration:** Incorporated the exact traditional texts for the Preparatory Prayer, the 9 Daily Reflections, and the Final Prayer, directly sourced from official Novena resources.
-- **Asset Cleanup:** Removed generic jewelry template images in the `/images/` folder to make room for religious/devotional imagery.
-- **UI Tweaks:** Adapted the color palette and typography from a luxury brand feel to a more serene, peaceful, and traditionally Catholic aesthetic.
+## Main Code Structure & Functionality
+
+### 1. index.html (Markup & UI Layout)
+The main structure consists of several semantic HTML5 sections:
+- **#inicio (Hero):** The landing area featuring the main image of St. Joseph and navigation.
+- **#oraciones (Fixed Prayers):** A two-column grid displaying the Preparatory Prayer and the Final Prayer that must be recited every day.
+- **#dias (9-Day Devotion):** An interactive 2-column tabbed interface. The left column holds 9 buttons (one for each day), and the right column dynamically displays the text for the selected day.
+- **#historia & #intenciones:** Informational sections with additional context and a layout for sending prayer intentions.
+
+### 2. style.css (Styling & Animations)
+- **Variables:** Utilizes CSS variables for consistent theming (typography, gold and earthy color tones).
+- **Flexbox & Grid:** Relies on modern CSS layout techniques, particularly in the .novena-tabs-container which neatly divides the left navigation buttons from the right content pane.
+- **Transitions:** Applies CSS transitions for a smooth fade-in effect when toggling between the days in the Novena section, ensuring stable and comfortable reading.
+
+### 3. main.js (Interactivity)
+- **Tabbed Interface Logic:** Uses Vanilla JavaScript to handle the "Camino de 9 Días" section. It listens for click events on the .novena-tab-btn buttons, hides inactive panes, and displays the chosen day's pane by toggling the .active class and checking the data-day attribute.
+- **Scroll & Navigation:** Manages sticky header scrolling effects and mobile hamburger menu toggling.
 
 ## Pending Improvements
-- Add High-Quality images of St. Joseph for each day's meditation.
+
 - Consider adding an audio player for guided audio prayers.
 - Implement a daily progress tracker (Local Storage) so users can remember which day they are on.
+
 
